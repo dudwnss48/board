@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  </head>
+  <body>
+    
+    
+      
+        <div style="text-align: right;">
+          <button onclick="location.href='/new'">글쓰기</button>
+        </div>
+
+<table class="table">
+    <!-- 제목 행 -->
+    <tr><td colspan="5"><h2>게시판</h2></td></tr>
+
+    <!-- 테이블 헤더 -->
+    <tr class="header">
+        <td class="num">번호</td>
+        <td class="title">제목</td>
+        <td>작성자</td>
+        <td>작성날짜</td>
+        <!--<td>삭제</td>-->
+    </tr>
+
+    <!-- 게시글 목록 -->
+    <tr th:each="board : ${boards}" class="body">
+      <td th:text="${board.id}"></td>        <!-- 번호 -->
+      <td th:text="${board.title}" class="title"></td>  <!-- 제목 -->
+      <td th:text="${board.writer}"></td>     <!-- 작성자 -->
+      <td th:text="${board.createdAt}"></td>  <!-- 작성날짜 -->
+      <!--<td><a th:href="@{/delete/{id}(id=${board.id})}">삭제</a></td>  삭제 버튼 -->
+   </tr>
+
+
+
+
+
+</table>
+
+<br>
+
+<!-- 글쓰기 버튼 -->
+
+</body>
+</html>
+
+<style>
+
+  
+  table {
+    margin: auto;
+    width: 700px;
+    border-radius: 5px;
+    border-collapse: collapse;
+    border-top: none;
+  }
+  .header {
+    background-color: rgb(218, 231, 255);
+    text-align: center;
+  }
+  .table td, .table th {
+    border-bottom: 1px lightgray solid; 
+    height: 30px;
+    font-size: 14px;
+  }
+  .num {
+    width: 50px;
+  }
+  .title {
+    width: 500px;
+  }
+  .body {
+    text-align: center;
+  }
+  .body .title {
+    text-align: left;
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    outline: 1.5px rgb(68, 136, 244) solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    background-color: rgb(164, 199, 255);
+  }
+  button:active {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 5px;
+    outline: 1.5px rgb(27, 76, 155) solid;
+    padding-left: 10px;
+    background-color: rgb(68, 136, 244);
+  }
+  </style>

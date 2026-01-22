@@ -1,4 +1,4 @@
-package com.example.BOARD;
+package com.example.board;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Board {
+public class board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,11 +15,11 @@ public class Board {
     private String content;
 
     // 기본 생성자
-    public Board() {}
+    public board() {}
 
     // 생성자, getter, setter 생략 (IDE 자동 생성 가능)
     // 아래 예시로 간단히
-    public Board(String title, String content) {
+    public board(String title, String content) {
         this.title = title;
         this.content = content;
     }
