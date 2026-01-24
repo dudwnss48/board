@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>새 글 작성</title>
+</head>
+<body>
+
+<h2>새 글 작성</h2>
+
+<form th:action="@{/save}" th:object="${board}" method="post">
+    <table border="1">
+        <tr>
+            <td>제목</td>
+            <td>
+                <input type="text" th:field="*{title}" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td>내용</td>
+            <td>
+                <textarea th:field="*{content}" rows="5" cols="40" required></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>작성자</td>
+            <td>
+                <input type="text" th:field="*{writer}" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <button type="submit">저장</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<br>
+
+<a href="/">목록으로 돌아가기</a>
+
+</body>
+</html>
+
+
+
+
+
+<style>
+
+  
+  table {
+    margin: auto;
+    width: 700px;
+    border-radius: 5px;
+    border-collapse: collapse;
+    border-top: none;
+  }
+  .header {
+    background-color: rgb(218, 231, 255);
+    text-align: center;
+  }
+  .table td, .table th {
+    border-bottom: 1px lightgray solid; 
+    height: 30px;
+    font-size: 14px;
+  }
+  .num {
+    width: 50px;
+  }
+  .title {
+    width: 500px;
+  }
+  .body {
+    text-align: center;
+  }
+  .body .title {
+    text-align: left;
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    outline: 1.5px rgb(68, 136, 244) solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    background-color: rgb(164, 199, 255);
+  }
+  button:active {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 5px;
+    outline: 1.5px rgb(27, 76, 155) solid;
+    padding-left: 10px;
+    background-color: rgb(68, 136, 244);
+  }
+  </style>

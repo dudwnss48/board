@@ -1,30 +1,33 @@
-package com.example.board;
+package com.example.BOARD;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
+import java.time.LocalDateTime;
+
 @Service
+@Transactional
 public class BoardService {
-    private final BoardRepository repo;
 
-    public BoardService(BoardRepository repo) {
-        this.repo = repo;
+    private final BoardRepository boardRepository;
+
+    @Autowired
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
     }
 
-    public List<board> findAll() {
-        return repo.findAll();
+    // 새 글 저장
+    public void saveBoard(Board board) {
+        board.setCreatedAt(LocalDateTime.now());// 작성일 자동 입력
+        boardRepository.save(board);
     }
 
-    public board save(board board) {
-        return repo.save(board);
-    }
-
-    public void deleteById(Long id) {
-        repo.deleteById(id);
-    }
-
-    public board findById(Long id) {
-        return repo.findById(id).orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다"));
+    // 🔹 글 목록 조회
+    public List<Board> findAll() {
+        return boardRepository.findAll();
     }
 }
